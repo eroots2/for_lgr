@@ -8,7 +8,6 @@
       .split {
           display: flex;
           justify-content: space-around;
-          flex-direction: column; /* 세로 방향 정렬 */
       }
       .split div {
           flex: 1;
@@ -25,7 +24,7 @@
         box-sizing: border-box; /* padding 포함 계산 */
      }
      #output {
-          font-size: 48px;
+          font-size: 38px;
           text-align: center;
       display: flex; /* Flexbox 사용 */
       justify-content: space-around; /* 가로로 균등하게 배치 */
@@ -35,42 +34,116 @@
   #output div {
       flex: 1; /* 각 항목이 동일한 크기로 확장 */
       text-align: center; /* 텍스트 가운데 정렬 */
-          font-size: 48px;
+          font-size: 38px;
       padding: 10px;
   }
   .btn-flex {
     display: flex;
-    flex-direction: column; /* 세로 방향 정렬 */
+    flex-direction: row; /* 세로 방향 정렬 */
     align-items: center; /* 가로 가운데 정렬 */
     gap: 10px; /* 항목 사이 간격 */
+    padding: 10px;
+}
+  .style1-flex {
+    display: flex;
+    flex-direction: column; /* 세로 방향 정렬 */
+    align-items: center; /* 가로 가운데 정렬 */
+    gap:  5px; /* 항목 사이 간격 */
+    padding:  5px;
 }
 
+  .time-flex {
+    display: flex;
+    flex-direction: column; /* 세로 방향 정렬 */
+    align-items: center; /* 가로 가운데 정렬 */
+    gap: 20px; /* 항목 사이 간격 */
+    padding: 20px;
+}
 
+.metronome-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arm {
+  position: absolute;
+  width: 6px;
+  height: 100px;
+  background: #333;
+  transform-origin: bottom center;
+  transform: rotate(0deg);
+  transition: transform 0.1s linear;
+}
+
+.bpm-input {
+  margin: 2px;
+}
+.time-elapsed {
+  margin-left: 20px;
+  font-size: 1rem;
+}
+
+.progress-bar {
+  width:  80px;
+  height: 130px;
+  background: #76c7c0;
+  margin-left: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar-inner {
+  height: 100%;
+  background: #ddd;
+  width: 100%;
+  <!-- transition: height 1s linear; -->
+}
   </style>
     <script src="script.js"></script>
 </head>
 
 <body>
-    <div class="btn-flex">
-      <label for="valueInput">Enter a value</label>
-      <input type="number" id="inputValue" min="3" max="100" value="3">
-      <button onclick="InputCheck()">기준 세팅</button>
-  </div>
 
-  <div class="center-flex">
-      <p id="time_show">︎❤</p>
-  </div>
-
-
+  <div class="time-flex">
+      <div class="btn-flex">
+        <div class="style1-flex">
+            <label for="valueInput">반복간격</label>
+            <input type="number" id="inputValue" min="3" max="100" value="3">
+            <button onclick="InputCheck()">시간Set</button>
     <div class="btn-flex">
       <label><input type="radio" name="option" value="1" checked> 1개</label>
       <label><input type="radio" name="option" value="3"> 3개</label>
-      <button onclick="readRadioValue()">Check</button>
     </div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-bar-inner" id="progressBar"></div>
+        </div>
+      </div>
+
+  <div class="bpm-input">
+    <label for="bpm">BPM: </label>
+    <input type="number" id="bpm" min="30" max="300" value="60">
+    <button onclick="startMetronome()">Start</button>
+    <button onclick="stopMetronome()">Stop</button>
+  </div>
+
+     <div class="metronome-container">
+      <div class="arm" id="arm"></div>
+     </div>
+  </div>
+
+
 
     <div class="center-flex">
-    <button onclick="start_time()">Start</button>
-    <button onclick="end_time()">End</button>
+    <button class="btn_flex", onclick="start_time()">Start</button>
+    <button class="btn_flex", onclick="end_time()">End</button>
+    <button class="btn_flex", onclick="next_btn()">Next ►</button>
     </div>
 
 

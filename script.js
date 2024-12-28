@@ -25,7 +25,7 @@ var next_index = 0;
 var option = "1";
 var code_index = 0;
 
-    const clickSound = new Audio('./pop-39222.mp3');
+    const clickSound = new Audio('./pop.m4a');
 
 function getRandomNumber(opt) {
     if (opt === "1"){
@@ -55,11 +55,11 @@ function CodeIndexSet(){
     } else if (option === "3") {
         output.className = 'split';
         const text = [ codes[temp], codes[temp+1], codes[temp+2] ]
-        output.innerHTML = `<div>${text[0]}</div><div>${text[1]}</div><div>${text[2]}</div>`; // 3등분
+        output.innerHTML = `<div>${text[0]}-</div><div>${text[1]}-</div><div>${text[2]}</div>`; // 3등분
 
         output2.className = 'split';
         const text2 = [ codes[temp2], codes[temp2+1], codes[temp2+2] ]
-        output2.innerHTML = `<div>${text[0]}</div><div>${text[1]}</div><div>${text[2]}</div>`; // 3등분
+        output2.innerHTML = `<div>${text2[0]}-</div><div>${text2[1]}-</div><div>${text2[2]}</div>`; // 3등분
     }
     curr_index = next_index;
     next_index = getRandomNumber(option)

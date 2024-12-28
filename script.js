@@ -19,12 +19,13 @@ var time_check = 0;
 var time_end = true;
 var input_value = 3;
 
-var prev_index = 0;
+var curr_index = 0;
+var next_index = 0;
 
 var option = "1";
 var code_index = 0;
 
-    const clickSound = new Audio('https://www.soundjay.com/button/beep-07.wav');
+    const clickSound = new Audio('./pop-39222.mp3');
 
 function getRandomNumber(opt) {
     if (opt === "1"){
@@ -41,23 +42,30 @@ function CodeIndexSet(){
     console.log(`${selected}, ${typeof(selected)}`);
     option = selected; 
 
-
-    var temp = getRandomNumber(option)
-    while(temp == prev_index){
-        temp = getRandomNumber(option)
-    }
+    var temp = curr_index;
+    var temp2 = next_index;
 
     const output = document.getElementById('output');
     if (option === "1") {
         output.className = ''; // 기존 스타일 제거
         const text = codes[temp];
         output.innerHTML = text; // 하나의 큰 텍스트
+        const text2 = codes[temp2];
+        output2.innerHTML = text2; // 하나의 큰 텍스트
     } else if (option === "3") {
         output.className = 'split';
         const text = [ codes[temp], codes[temp+1], codes[temp+2] ]
         output.innerHTML = `<div>${text[0]}</div><div>${text[1]}</div><div>${text[2]}</div>`; // 3등분
+
+        output2.className = 'split';
+        const text2 = [ codes[temp2], codes[temp2+1], codes[temp2+2] ]
+        output2.innerHTML = `<div>${text[0]}</div><div>${text[1]}</div><div>${text[2]}</div>`; // 3등분
     }
-    prev_index = temp
+    curr_index = next_index;
+    next_index = getRandomNumber(option)
+    while(next_index ==  curr_index){
+        next_index = getRandomNumber(option)
+    }
 }
 
 
@@ -93,10 +101,20 @@ function readRadioValue(){
 
 function start_time() {
     const progressBar = document.getElementById('progressBar');
+    const selected = document.querySelector('input[name="option"]:checked').value;
+    option = selected; 
   if(time_end) { 
      console.log("start 버튼이 클릭되었습니다!");
      time_check = 0;
      time_end = false;
+
+    curr_index = getRandomNumber(option)
+    next_index = getRandomNumber(option)
+
+    while(next_index ==  curr_index){
+        next_index = getRandomNumber(option)
+    }
+
      CodeIndexSet();
      intervalTimer(1000);
   }

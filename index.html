@@ -24,18 +24,36 @@
         box-sizing: border-box; /* padding 포함 계산 */
      }
      #output {
-          font-size: 38px;
+          font-size: 28px;
           text-align: center;
       display: flex; /* Flexbox 사용 */
       justify-content: space-around; /* 가로로 균등하게 배치 */
       align-items: center; /* 세로 중앙 정렬 */
       gap: 10px; /* 칸 사이 간격 */
+      font-weight: 800;
   }
   #output div {
       flex: 1; /* 각 항목이 동일한 크기로 확장 */
       text-align: center; /* 텍스트 가운데 정렬 */
-          font-size: 38px;
-      padding: 10px;
+          font-size: 28px;
+      gap: 10px; /* 칸 사이 간격 */
+      color:#848484
+  }
+     #output2 {
+          font-size: 28px;
+          
+          text-align: center;
+      display: flex; /* Flexbox 사용 */
+      justify-content: space-around; /* 가로로 균등하게 배치 */
+      align-items: center; /* 세로 중앙 정렬 */
+      gap: 10px; /* 칸 사이 간격 */
+      color:#966a96
+  }
+  #output2 div {
+      flex: 1; /* 각 항목이 동일한 크기로 확장 */
+      text-align: center; /* 텍스트 가운데 정렬 */
+          font-size: 28px;
+      gap: 10px; /* 칸 사이 간격 */
   }
   .btn-flex {
     display: flex;
@@ -92,7 +110,7 @@
 .progress-bar {
   width:  80px;
   height: 130px;
-  background: #76c7c0;
+  background: #d01e3c;
   margin-left: 2px;
   position: relative;
   overflow: hidden;
@@ -149,6 +167,9 @@
 
     <div class="center-flex">
     <div id="output"> 여기에 코드가 출력 됩니다 </div>
+    </div>
+    <div class="center-flex">
+    <div id="output2"> 여기에 코드가 출력 됩니다 </div>
     </div>
  </body>
   
